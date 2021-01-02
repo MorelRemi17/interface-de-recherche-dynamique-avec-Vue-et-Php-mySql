@@ -1,4 +1,4 @@
-<div class="lobby-container">
+<div id="vue-app" class="lobby-container">
   <ul>
     <li class="name">
       <i class="fas fa-search"></i>
