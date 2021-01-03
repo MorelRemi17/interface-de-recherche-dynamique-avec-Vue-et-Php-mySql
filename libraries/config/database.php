@@ -9,15 +9,16 @@
 function getPDO(): PDO
 {
 
-    $servername = 'localhost';
-    $dbname = 'vuejs-php';
-    $user = 'root';
-    $pass = 'rootgit ';
+  $dbname = 'vuejs-php';
+  $user = 'root';
+  $pass = '';
 
-    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass, [
-        PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-
-    return $pdo;
+  try {
+    $pdo = new PDO('mysql:host=localhost;charset=utf8;dbname=' . $dbname, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+    die('Erreur !:'  . $e->getMessage());
+  }
+  
+  return $pdo;
 }
